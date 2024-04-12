@@ -2,18 +2,18 @@
 
 Welcome to the "Universe in your pocket" project! This website is created to provide users with information about space, astronomy, and space missions. Various sections are available to explore space and delve into its mysterious depths.
 
-About the Project
+<h2>About the Project</h2>
 
 Our project includes the following main components:
 
-Home Page: Here you will find a brief description of the project, as well as the latest news from the world of astronomy.
-Articles and News: In this section, you can read interesting articles and the latest news about space, astronomy, and space missions.
-Space Blog: We are excited to introduce a new blog section, where you can share your thoughts, articles, and photos about space. You can create an account here to publish your materials and discuss them with other participants.
-Space Calendar: View upcoming space events and missions.
-Interactive Space Maps: Travel through space, exploring interactive maps of constellations, planets, and galaxies.
-Planets and Stars Information: Detailed information about planets, stars, and other space objects will help you expand your knowledge of the universe.
-Administrator Panel: A control panel allowing administrators to add, edit, and delete articles, as well as update information about space events and missions.
-Accessibility: We pay special attention to the accessibility of the website for users with disabilities. Visit the accessibility instructions page and tools for accessibility checking.
+<h3>Home Page:</h3> Here you will find a brief description of the project, as well as the latest news from the world of astronomy.
+<h3>Articles and News:</h3> In this section, you can read interesting articles and the latest news about space, astronomy, and space missions.
+<h3>Space Blog:</h3> We are excited to introduce a new blog section, where you can share your thoughts, articles, and photos about space. You can create an account here to publish your materials and discuss them with other participants.
+<h3>Space Calendar:</h3> View upcoming space events and missions.
+<h3>Interactive Space Maps:</h3> Travel through space, exploring interactive maps of constellations, planets, and galaxies.
+<h3>Planets and Stars Information:</h3> Detailed information about planets, stars, and other space objects will help you expand your knowledge of the universe.
+<h3>Administrator Panel:</h3> A control panel allowing administrators to add, edit, and delete articles, as well as update information about space events and missions.
+<h3>Accessibility:</h3> We pay special attention to the accessibility of the website for users with disabilities. Visit the accessibility instructions page and tools for accessibility checking.
 
 Installation and Usage
 
