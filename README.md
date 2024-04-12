@@ -1,4 +1,4 @@
-Universe in your pocket
+<h1>Universe in your pocket</h1>
 
 Welcome to the "Universe in your pocket" project! This website is created to provide users with information about space, astronomy, and space missions. Various sections are available to explore space and delve into its mysterious depths.
 
