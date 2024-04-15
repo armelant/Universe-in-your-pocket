@@ -3,9 +3,15 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const { validationResult } = require('express-validator');
-const { registerValidation } = require('./validations/auth.js');
+const {
+  loginValidation,
+  registerValidation,
+  postCreateValidation,
+} = require('./validations/auth.js');
 const userModel = require('./models/user.js');
 const checkAuth = require('./utils/checkAuth.js');
+const postModel = require('./models/post.js');
+const User = require('./models/user.js');
 
 // require('dotenv').config();
 
@@ -47,7 +53,8 @@ const app = express();
 
 app.use(express.json());
 
-app.post('/auth/login', async (req, res) => {
+// User
+app.post('/auth/login', loginValidation, async (req, res) => {
   try {
     const user = await userModel.findOne({ email: req.body.email });
 
@@ -152,6 +159,43 @@ app.get('/auth/me', checkAuth, async (req, res) => {
     console.log(err);
     res.status(500).json({
       message: 'Access denied',
+    });
+  }
+});
+
+// Blog
+
+app.get('/posts', async (req, res) => {
+  try {
+    const posts = await postModel.find().populate('user').exec();
+
+    res.json(posts);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: 'Failed to retrieve articles',
+    });
+  }
+});
+
+// Creating
+app.post('/posts', checkAuth, postCreateValidation, async (req, res) => {
+  try {
+    const doc = new postModel({
+      title: req.body.title,
+      text: req.body.text,
+      tags: req.body.tags,
+      imageUrl: req.body.imageUrl,
+      user: req.userId,
+    });
+
+    const post = await doc.save();
+
+    res.json(post);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: 'Article creation failed',
     });
   }
 });
