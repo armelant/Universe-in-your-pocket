@@ -1,12 +1,15 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-function App() {
+import main from './pages/mainPage.js';
+
+const App = () => {
   return (
-        
-        <p>
-          Universe in your pocket
-        </p>
-        
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<main />} />
+        </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
