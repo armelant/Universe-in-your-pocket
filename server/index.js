@@ -1,11 +1,13 @@
 const express = require('express');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
-const { validationResult } = require('express-validator');
-const { registerValidation } = require('./validations/auth.js');
-const userModel = require('./models/user.js');
+const {
+  loginValidation,
+  registerValidation,
+  postCreateValidation,
+} = require('./validations/auth.js');
 const checkAuth = require('./utils/checkAuth.js');
+const userController = require('./controllers/userController.js');
+const postController = require('./controllers/postController.js');
 
 // require('dotenv').config();
 
@@ -44,117 +46,24 @@ mongoose
   .catch(() => console.log('DB error', err));
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.post('/auth/login', async (req, res) => {
-  try {
-    const user = await userModel.findOne({ email: req.body.email });
+// User
+app.post('/auth/login', loginValidation, userController.login);
+app.post('/auth/register', registerValidation, userController.register);
+app.get('/auth/me', checkAuth, userController.getMe);
 
-    if (!user) {
-      return res.status(404).json({
-        message: 'User is not found',
-      });
-    }
+// Blog
 
-    const isValidPass = await bcrypt.compare(
-      req.body.password,
-      user._doc.passwordHash
-    );
-
-    if (!isValidPass) {
-      return res.status(400).json({
-        message: 'Wrong login or password',
-      });
-    }
-
-    const token = jwt.sign(
-      {
-        _id: user._id,
-      },
-      'secret123',
-      {
-        expiresIn: '30d',
-      }
-    );
-    const { passwordHash, ...userData } = user._doc;
-
-    res.json({
-      ...userData,
-      token,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      message: 'Authorization attempt failed',
-    });
-  }
-});
-
-app.post('/auth/register', registerValidation, async (req, res) => {
-  try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json(errors.array());
-    }
-
-    const password = req.body.password;
-    const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(password, salt);
-
-    const doc = new userModel({
-      email: req.body.email,
-      fullName: req.body.fullName,
-      avatarUrl: req.body.avatarUrl,
-      passwordHash: hash,
-    });
-
-    const user = await doc.save();
-
-    const token = jwt.sign(
-      {
-        _id: user._id,
-      },
-      'secret123',
-      {
-        expiresIn: '30d',
-      }
-    );
-
-    const { passwordHash, ...userData } = user._doc;
-
-    res.json({
-      ...userData,
-      token,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      message: 'Registration attempt failed',
-    });
-  }
-});
-
-app.get('/auth/me', checkAuth, async (req, res) => {
-  try {
-    const user = await userModel.findById(req.userId);
-
-    if (!user) {
-      return res.status(404).json({
-        message: 'User is not found',
-      });
-    }
-
-    const { passwordHash, ...userData } = user._doc;
-
-    res.json(userData);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      message: 'Access denied',
-    });
-  }
-});
+app.get('/tags', postController.getLastTags);
+app.get('/posts', postController.getAll);
+app.get('/posts/tags', postController.getLastTags);
+app.get('/posts/:id', postController.getOne);
+app.post('/posts', checkAuth, postCreateValidation, postController.create);
+app.delete('/posts/:id', checkAuth, postController.remove);
+app.patch('/posts/:id', checkAuth, postCreateValidation, postController.update);
 
 app.listen(3000, (err) => {
   if (err) {
