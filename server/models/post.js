@@ -21,7 +21,7 @@ const postSchema = new mongoose.Schema(
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User', // relationship between two tables
+      ref: 'user', // relationship between two tables
       required: true,
     },
     imageUrl: String,
