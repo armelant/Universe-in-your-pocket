@@ -1,3 +1,5 @@
+/* 
+
 .logo{
     position: absolute;
 width: 50px;
@@ -6,6 +8,7 @@ height: 50px;
 background: url(../../img/logo.png);
 color: #B1B9CC; 
 }
+
 .companyName {
     position: absolute;
     width: 300px;
@@ -28,11 +31,11 @@ color: #B1B9CC;
     width: 300px;
     height: 29px;
 
-
 }
 
 .navBrand {
     margin-left: 50px;
+    background-color: #5c6069;
 }
 
 .navMenu ul {
@@ -44,14 +47,14 @@ color: #B1B9CC;
     margin-top: 0px;
     align-items: center;
     height: 100%;
-  }
+}
   
-  .navMenu ul li {
+.navMenu ul li {
     margin-right: 20px;
     margin-top: 13px;
-  }
+}
   
-  .navMenu ul li a {
+.navMenu ul li a {
     font-family: 'Courier Prime';
     font-style: normal;
     font-weight: 400;
@@ -61,51 +64,11 @@ color: #B1B9CC;
 
     color: #B1B9CC;
     text-decoration: none;
-  }
+}
   
-  .navMenu ul li a:hover {
+.navMenu ul li a:hover {
     color: #5c6069;
     background-color: #ffffff00;
-  }
+}
   
-  
-
-
-
-
-
-
-/* .navMenu {
-
-position: absolute;
-width: 80px;
-height: 17px;
-
-font-family: 'Courier Prime';
-font-style: normal;
-font-weight: 400;
-font-size: 17px;
-line-height: 19px;
-text-align: center;
-
-color: #B1B9CC;
-
-
-
-/* Home 
-
-position: absolute;
-width: 80px;
-height: 17px;
-
-
-
-
-
-/* About 
-
-position: absolute;
-width: 80px;
-height: 17px;
-} */
-
+   */
