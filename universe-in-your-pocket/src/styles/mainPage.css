@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Lexend:wght@100..900&family=Russo+One&display=swap');
-
 
 body {
     background-image: url('../img/background.jpg');
@@ -12,7 +10,7 @@ body {
 .contentBox-1 {
     position: absolute;
     left: 5%;
-    top: 10%;
+    top: 8%;
 }
 
 .contentBox-1 > .contentBoxTitle {
@@ -52,6 +50,7 @@ font-style: normal;
 font-weight: 400;
 font-size: 17px;
 line-height: 19px;
+line-height: 51px;
 
 color: #B1B9CC;
 width: 165px;
@@ -60,5 +59,59 @@ height: 54px;
 background: #101A31;
 border-radius: 60px;
 border-color: #101A31;
+
+}
+
+.contentBox-2 {
+    position: absolute;
+    left: 58%;
+    top: 70%;
+}
+
+.contentBox-2 > .contentBoxContent{
+
+position: absolute;
+width: 450px;
+height: 50px;
+
+font-family: 'Courier Prime';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 22px;
+text-align: center;
+
+color: #d1e0f7;
+
+
+}
+
+.contentBox-2 > .contentBoxButton {
+    position: absolute;
+    top: 80px;
+    left: 125px;
+
+}
+
+.contentBox-2 > .contentBoxButton button {
+    position: absolute;
+    width: 200px;
+    height: 53px;
+    background: #D9D9D9;
+    border-radius: 6.5px;
+    border-color: #d9d9d900;
+    
+
+    font-family: 'Courier Prime';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 22px;
+    text-align: center;
+    line-height: 51px;
+
+    color: #8094C2;
+
+
 
 }

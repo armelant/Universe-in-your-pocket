@@ -16,7 +16,8 @@ const MainPage = () => {
             </div>
 
       </div>
-      {/* <div className="contentBox-2">
+      
+      <div className="contentBox-2">
         <div className="contentBoxContent">
           <p>Unleash the mysteries of the cosmos from the comfort of your home</p>
         </div>
@@ -24,7 +25,7 @@ const MainPage = () => {
         <div className="contentBoxButton">
           <button>Get Started</button>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };
