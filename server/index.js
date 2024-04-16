@@ -1,4 +1,5 @@
 const express = require('express');
+const multer = require('multer');
 const mongoose = require('mongoose');
 const {
   loginValidation,
@@ -6,6 +7,7 @@ const {
   postCreateValidation,
 } = require('./validations/auth.js');
 const checkAuth = require('./utils/checkAuth.js');
+const handleValidationErrors = require('./utils/handleValidationErrors.js');
 const userController = require('./controllers/userController.js');
 const postController = require('./controllers/postController.js');
 
@@ -48,12 +50,45 @@ mongoose
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Creating a storage for images
+const storage = multer.diskStorage({
+  destination: (_, __, cb) => {
+    cb(null, 'uploads');
+  },
+  filename: (_, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+// function that allows us to use multer
+const upload = multer({ storage });
+
 app.use(express.json());
 
+// Get a request to get a static file
+app.use('/uploads', express.static('uploads'));
+
 // User
-app.post('/auth/login', loginValidation, userController.login);
-app.post('/auth/register', registerValidation, userController.register);
+app.post(
+  '/auth/login',
+  loginValidation,
+  handleValidationErrors,
+  userController.login
+);
+app.post(
+  '/auth/register',
+  registerValidation,
+  handleValidationErrors,
+  userController.register
+);
 app.get('/auth/me', checkAuth, userController.getMe);
+
+// Route
+app.post('/upload', checkAuth, upload.single('image'), (req, res) => {
+  res.json({
+    url: `/uploads/${req.file.originalname}`,
+  });
+});
 
 // Blog
 
@@ -61,9 +96,21 @@ app.get('/tags', postController.getLastTags);
 app.get('/posts', postController.getAll);
 app.get('/posts/tags', postController.getLastTags);
 app.get('/posts/:id', postController.getOne);
-app.post('/posts', checkAuth, postCreateValidation, postController.create);
+app.post(
+  '/posts',
+  checkAuth,
+  postCreateValidation,
+  handleValidationErrors,
+  postController.create
+);
 app.delete('/posts/:id', checkAuth, postController.remove);
-app.patch('/posts/:id', checkAuth, postCreateValidation, postController.update);
+app.patch(
+  '/posts/:id',
+  checkAuth,
+  postCreateValidation,
+  handleValidationErrors,
+  postController.update
+);
 
 app.listen(3000, (err) => {
   if (err) {
