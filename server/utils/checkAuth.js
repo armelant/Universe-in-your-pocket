@@ -22,3 +22,7 @@ const checkAuth = (req, res, next) => {
 };
 
 module.exports = checkAuth;
+
+//This library generates a special token,
+//with which we can access protected requests in our application.
+//With this token we will have access to some private information in the backend or database.

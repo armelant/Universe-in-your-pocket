@@ -11,8 +11,6 @@ const handleValidationErrors = require('./utils/handleValidationErrors.js');
 const userController = require('./controllers/userController.js');
 const postController = require('./controllers/postController.js');
 
-// require('dotenv').config();
-
 //Constants
 // const PORT = process.env.PORT;
 // const DB_USER = process.env.DB_USER;
@@ -30,15 +28,6 @@ const postController = require('./controllers/postController.js');
 //   '.mongodb.net/' +
 //   process.env.DB_NAME +
 //   '?retryWrites=true&w=majority&appName=Cluster0';
-
-// mongoose
-//   .connect(dbURI)
-//   .then((result) => {
-//     console.log('Connected to DB');
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
 
 mongoose
   .connect(
