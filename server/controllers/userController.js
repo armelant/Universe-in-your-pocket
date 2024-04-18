@@ -4,6 +4,7 @@ const userModel = require('../models/user.js');
 
 const register = async (req, res) => {
   try {
+    // Password encryption
     const password = req.body.password;
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
@@ -15,8 +16,10 @@ const register = async (req, res) => {
       passwordHash: hash,
     });
 
+    // Creating a user in the database
     const user = await doc.save();
 
+    // Creating a token
     const token = jwt.sign(
       {
         _id: user._id,
