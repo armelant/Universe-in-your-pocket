@@ -11,7 +11,7 @@ const Header = () => {
               alt="logo"
               className="logo"
             />
-            <span className="companyName">COSMOPOCKET</span>
+            <span className="companyName">!!!!COSMOPOCKET</span>
           </a>
         </div>
       </div>
