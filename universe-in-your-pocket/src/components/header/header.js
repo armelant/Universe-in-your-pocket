@@ -1,39 +1,39 @@
-import React from 'react';
-import './header.css';
-import { Link } from 'react-router-dom';
-
 const Header = () => {
   return (
-    <>
-      <div className="navbar">
-        <div className="navBrand">
-          <Link to="/">
-            <img
-              src={require('../../img/logo.png')}
-              alt="logo"
-              className="logo"
-            />
-            <span className="companyName">COSMOPOCKET</span>
-          </Link>
-        </div>
+    <header className="header">
+      <div className="navBrand">
+        <a href="/" class="navBrand__link">
+          <img
+            src={require("../../img/logo.png")}
+            alt="logo"
+            className="header__logo"
+          />
+          <span className="companyName">COSMOPOCKET</span>
+        </a>
       </div>
-      <div className="navMenu">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/News">News</Link>
-          </li>
-          <li>
-            <Link to="/News">Blog</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-        </ul>
-      </div>
-    </>
+      <ul className="navMenu menu">
+        <li>
+          <a href="/" className="navMenu__link">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="/News" className="navMenu__link">
+            News
+          </a>
+        </li>
+        <li>
+          <a href="/Blog" className="navMenu__link">
+            Blog
+          </a>
+        </li>
+        <li>
+          <a href="/contact" className="navMenu__link">
+            Contact
+          </a>
+        </li>
+      </ul>
+    </header>
   );
 };
 
