@@ -1,33 +1,35 @@
+import React from 'react';
 import './header.css';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
     <>
       <div className="navbar">
         <div className="navBrand">
-          <a href="/">
+          <Link to="/">
             <img
               src={require('../../img/logo.png')}
               alt="logo"
               className="logo"
             />
-            <span className="companyName">!!!!COSMOPOCKET</span>
-          </a>
+            <span className="companyName">COSMOPOCKET</span>
+          </Link>
         </div>
       </div>
       <div className="navMenu">
         <ul>
           <li>
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="/News">News</a>
+            <Link to="/News">News</Link>
           </li>
           <li>
-            <a href="/News">Blog</a>
+            <Link to="/News">Blog</Link>
           </li>
           <li>
-            <a href="/contact">Contact</a>
+            <Link to="/contact">Contact</Link>
           </li>
         </ul>
       </div>
