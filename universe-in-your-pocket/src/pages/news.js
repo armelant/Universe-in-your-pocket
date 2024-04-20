@@ -1,23 +1,34 @@
+import React, { useState, useEffect } from 'react';
 
+const News = () => {
+    const [news, setNews] = useState([]);
 
-const news = () => {
+    useEffect(() => {
+        fetch('/news')
+            .then(response => response.json())
+            .then(data => setNews(data))
+            .catch(error => console.error('Error fetching news:', error));
+    }, []);
+
     return (
-        <>
         <div className="news">
-            <div className="newsBox">
-                <div className="newsContent">
-                <p>The latest news from the company will be published here. These may include announcements, product updates, or other important events.</p>
+            {news.map((item, index) => (
+                <div key={index} className="newsBox">
+                    <div className="newsContent">
+                        <h2>{item.title}</h2>
+                        <p>{item.content}</p>
+                    </div>
+                    <div className="newsDate">
+                        <p>{new Date(item.date).toLocaleDateString()}</p>
+                    </div>
+                    <div className="newsImg">
+                        <img src={item.imageUrl} alt="newsImg" />
+                        <p className="imageDescription">{item.altText || "Textual description of the image"}</p>                   
+                    </div>
                 </div>
-                <div className="newsDate">
-                    <p>March 20, 2021</p>
-                </div>
-            </div>
-            <div className="newsImg">
-            <img src={require("../img/test.jpg")} alt="newsImg" />
-            </div>
+            ))}
         </div>
-        </>
     );
 };
 
-export default news;
+export default News;

@@ -31,9 +31,7 @@ color: #B1B9CC;
 
 .navbar {
     position: absolute;
-    width: 300px;
-    height: 29px;
-
+    background-color: #101A31;
 }
 
 .navBrand {
@@ -197,20 +195,26 @@ color: #ebf4f8;
 
 }
 
+.news {
+    background: #101A31;
+  }
+
+
 .newsImg img {
     width: 500px;
     height: 500px;
     position: fixed;
-    top: 100px;
+    margin-top: 60px;
     left: 55%;
     border-radius: 15px;
     right: 0;
   }
   
   .newsBox {
+    
     position: absolute;
     width: 500px;
-    height: 50px;
+    height: auto;
 
     font-family: 'Courier Prime';
     font-style: normal;
@@ -222,10 +226,10 @@ color: #ebf4f8;
     color: #ebf4f8;
 
     margin-left: 5%;
-    margin-top: 50px;
-  }
+    margin-top: 60px;
 
-  /* .newsDate {
-    position: fixed;
-    margin-right: 30%;
-  } */
+    background-color: #00000042; 
+    padding: 20px; 
+    border-radius: 8px; 
+    margin-bottom: 2px;
+}
