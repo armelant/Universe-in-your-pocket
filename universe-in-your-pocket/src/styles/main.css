@@ -3,7 +3,7 @@
 
 
 
-.logo{
+/* .logo{
     position: absolute;
 width: 50px;
 height: 50px;
@@ -31,7 +31,9 @@ color: #B1B9CC;
 
 .navbar {
     position: absolute;
-    background-color: #101A31;
+    width: 300px;
+    height: 29px;
+
 }
 
 .navBrand {
@@ -70,7 +72,7 @@ color: #B1B9CC;
 .navMenu ul li a:hover {
     color: #5c6069;
     background-color: #ffffff00;
-}
+} */
   
   
 
@@ -86,7 +88,7 @@ color: #B1B9CC;
     }
 }
 
-.content1 {
+/* .content1 {
     position: absolute;
     left: 5%;
     top: 8%;
@@ -195,26 +197,20 @@ color: #ebf4f8;
 
 }
 
-.news {
-    background: #101A31;
-  }
-
-
 .newsImg img {
     width: 500px;
     height: 500px;
     position: fixed;
-    margin-top: 60px;
+    top: 100px;
     left: 55%;
     border-radius: 15px;
     right: 0;
   }
   
   .newsBox {
-    
     position: absolute;
     width: 500px;
-    height: auto;
+    height: 50px;
 
     font-family: 'Courier Prime';
     font-style: normal;
@@ -226,10 +222,10 @@ color: #ebf4f8;
     color: #ebf4f8;
 
     margin-left: 5%;
-    margin-top: 60px;
+    margin-top: 50px;
+  } */
 
-    background-color: #00000042; 
-    padding: 20px; 
-    border-radius: 8px; 
-    margin-bottom: 2px;
-}
+  /* .newsDate {
+    position: fixed;
+    margin-right: 30%;
+  } */

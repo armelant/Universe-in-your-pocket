@@ -1,34 +1,43 @@
-import React, { useState, useEffect } from 'react';
-
 const News = () => {
-    const [news, setNews] = useState([]);
-
-    useEffect(() => {
-        fetch('/news')
-            .then(response => response.json())
-            .then(data => setNews(data))
-            .catch(error => console.error('Error fetching news:', error));
-    }, []);
-
+    const date = [
+      { name: "jhjhhhh", date: "2024" },
+      { name: "jhjhhhh", date: "2024" },
+      { name: "jhjhhhh", date: "2024" },
+      { name: "jhjhhhh", date: "2024" },
+    ];
+  
     return (
+      <main className="main">
         <div className="news">
-            {news.map((item, index) => (
-                <div key={index} className="newsBox">
-                    <div className="newsContent">
-                        <h2>{item.title}</h2>
-                        <p>{item.content}</p>
-                    </div>
-                    <div className="newsDate">
-                        <p>{new Date(item.date).toLocaleDateString()}</p>
-                    </div>
-                    <div className="newsImg">
-                        <img src={item.imageUrl} alt="newsImg" />
-                        <p className="imageDescription">{item.altText || "Textual description of the image"}</p>                   
-                    </div>
-                </div>
-            ))}
+          <div className="newsBox">
+            <div className="newsContent">
+              <p>
+                The latest news from the company will be published here. These may
+                include announcements, product updates, or other important events.
+              </p>
+              <ul>
+                {date.map((item, index) => {
+                  return (
+                    <li key={index}>
+                      {item.name}-{item.date}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            <div className="newsDate">
+              <p>March 20, 2021</p>
+            </div>
+          </div>
+          <img
+            src={require("../../img/test.jpg")}
+            alt="newsImg"
+            className="newsImg"
+          />
         </div>
+      </main>
     );
-};
-
-export default News;
+  };
+  
+  export default News;
+  
