@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./styles/main.css";
 import Main from "./components/Main/Main.js";
-import Header from "./components/header/header.js";
+import Header from "./components/Header/Header.js";
 import News from "./components/News/News.js";
 import Register from "./components/Register/Register.js";
 import Authorization from "./components/Authorization/Authorization.js";
