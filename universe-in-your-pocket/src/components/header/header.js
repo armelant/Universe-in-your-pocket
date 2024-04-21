@@ -28,8 +28,8 @@ const Header = () => {
           </a>
         </li>
         <li>
-          <a href="/contact" className="navMenu__link">
-            Contact
+          <a href="/registration" className="navMenu__link">
+            Registration
           </a>
         </li>
       </ul>

@@ -1,3 +1,6 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
 const Main = () => {
   return (
     <main className="main">
@@ -16,8 +19,9 @@ const Main = () => {
         <h2 className="contentContent2">
           Unleash the mysteries of the cosmos from the comfort of your home
         </h2>
-
-        <button className="content2__button">Login</button>
+        <Link to="/authorization">
+          <button className="content2__button">Login</button>
+        </Link>
       </section>
     </main>
   );
