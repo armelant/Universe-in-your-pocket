@@ -1,0 +1,63 @@
+.header {
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navBrand {
+  display: flex;
+  width: 300px;
+}
+
+.navBrand__link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 16px;
+}
+
+.header__logo {
+  width: 50px;
+  height: 50px;
+
+  background: url(../../img/logo.png);
+}
+
+.companyName {
+  height: 29px;
+
+  font-family: "Russo One";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+
+  color: #b1b9cc;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 16px;
+}
+
+.navMenu__link {
+  font-family: "Courier Prime";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 19px;
+  text-align: center;
+
+  color: #b1b9cc;
+  text-decoration: none;
+}
+
+.navMenu__link:hover {
+  color: #5c6069;
+  background-color: #ffffff00;
+}
