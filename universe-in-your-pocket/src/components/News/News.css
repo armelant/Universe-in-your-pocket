@@ -1,0 +1,29 @@
+.news {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+
+}
+
+.newsBox {
+  width: 500px;
+  /* height: 50px; */
+
+  font-family: "Courier Prime";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  text-align: left;
+
+  color: #ebf4f8;
+}
+
+.newsImg {
+  width: 500px;
+  height: 500px;
+  /* top: 100px;
+  left: 55%; */
+  border-radius: 15px;
+  right: 0;
+}

@@ -1,13 +1,15 @@
 const express = require('express');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const multer = require('multer');
 const mongoose = require('mongoose');
-const { validationResult } = require('express-validator');
-const { registerValidation } = require('./validations/auth.js');
-const userModel = require('./models/user.js');
+const {
+  loginValidation,
+  registerValidation,
+  postCreateValidation,
+} = require('./validations/auth.js');
 const checkAuth = require('./utils/checkAuth.js');
-
-// require('dotenv').config();
+const handleValidationErrors = require('./utils/handleValidationErrors.js');
+const userController = require('./controllers/userController.js');
+const postController = require('./controllers/postController.js');
 
 //Constants
 // const PORT = process.env.PORT;
@@ -27,15 +29,6 @@ const checkAuth = require('./utils/checkAuth.js');
 //   process.env.DB_NAME +
 //   '?retryWrites=true&w=majority&appName=Cluster0';
 
-// mongoose
-//   .connect(dbURI)
-//   .then((result) => {
-//     console.log('Connected to DB');
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
-
 mongoose
   .connect(
     'mongodb+srv://Andrei:Andrei12345@cluster0.ykxhvdv.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0'
@@ -44,117 +37,69 @@ mongoose
   .catch(() => console.log('DB error', err));
 
 const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Creating a storage for images
+const storage = multer.diskStorage({
+  destination: (_, __, cb) => {
+    cb(null, 'uploads');
+  },
+  filename: (_, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+// function that allows us to use multer
+const upload = multer({ storage });
 
 app.use(express.json());
 
-app.post('/auth/login', async (req, res) => {
-  try {
-    const user = await userModel.findOne({ email: req.body.email });
+// Get a request to get a static file
+app.use('/uploads', express.static('uploads'));
 
-    if (!user) {
-      return res.status(404).json({
-        message: 'User is not found',
-      });
-    }
+// User
+app.post(
+  '/auth/login',
+  loginValidation,
+  handleValidationErrors,
+  userController.login
+);
+app.post(
+  '/auth/register',
+  registerValidation,
+  handleValidationErrors,
+  userController.register
+);
+app.get('/auth/me', checkAuth, userController.getMe);
 
-    const isValidPass = await bcrypt.compare(
-      req.body.password,
-      user._doc.passwordHash
-    );
-
-    if (!isValidPass) {
-      return res.status(400).json({
-        message: 'Wrong login or password',
-      });
-    }
-
-    const token = jwt.sign(
-      {
-        _id: user._id,
-      },
-      'secret123',
-      {
-        expiresIn: '30d',
-      }
-    );
-    const { passwordHash, ...userData } = user._doc;
-
-    res.json({
-      ...userData,
-      token,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      message: 'Authorization attempt failed',
-    });
-  }
+// Route
+app.post('/upload', checkAuth, upload.single('image'), (req, res) => {
+  res.json({
+    url: `/uploads/${req.file.originalname}`,
+  });
 });
 
-app.post('/auth/register', registerValidation, async (req, res) => {
-  try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json(errors.array());
-    }
+// Blog
 
-    const password = req.body.password;
-    const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(password, salt);
-
-    const doc = new userModel({
-      email: req.body.email,
-      fullName: req.body.fullName,
-      avatarUrl: req.body.avatarUrl,
-      passwordHash: hash,
-    });
-
-    const user = await doc.save();
-
-    const token = jwt.sign(
-      {
-        _id: user._id,
-      },
-      'secret123',
-      {
-        expiresIn: '30d',
-      }
-    );
-
-    const { passwordHash, ...userData } = user._doc;
-
-    res.json({
-      ...userData,
-      token,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      message: 'Registration attempt failed',
-    });
-  }
-});
-
-app.get('/auth/me', checkAuth, async (req, res) => {
-  try {
-    const user = await userModel.findById(req.userId);
-
-    if (!user) {
-      return res.status(404).json({
-        message: 'User is not found',
-      });
-    }
-
-    const { passwordHash, ...userData } = user._doc;
-
-    res.json(userData);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      message: 'Access denied',
-    });
-  }
-});
+app.get('/tags', postController.getLastTags);
+app.get('/posts', postController.getAll);
+app.get('/posts/tags', postController.getLastTags);
+app.get('/posts/:id', postController.getOne);
+app.post(
+  '/posts',
+  checkAuth,
+  postCreateValidation,
+  handleValidationErrors,
+  postController.create
+);
+app.delete('/posts/:id', checkAuth, postController.remove);
+app.patch(
+  '/posts/:id',
+  checkAuth,
+  postCreateValidation,
+  handleValidationErrors,
+  postController.update
+);
 
 app.listen(3000, (err) => {
   if (err) {

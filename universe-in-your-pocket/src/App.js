@@ -1,18 +1,22 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import "./styles/main.css"
-import MainPage from './pages/mainPage.js';
-import Header from './components/header/header.js';
-import News from './pages/news.js';
+import { Route, Routes } from "react-router-dom";
+import "./styles/main.css";
+import Main from "./components/Main/Main.js";
+import Header from "./components/Header/Header.js";
+import News from "./components/News/News.js";
+import Register from "./components/Register/Register.js";
+import Authorization from "./components/Authorization/Authorization.js";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <div>
       <Header />
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/news" element={<News />} />
-        </Routes>
-    </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/registration" element={<Register />} />
+        <Route path="/authorization" element={<Authorization />}></Route>
+      </Routes>
+    </div>
   );
 };
 

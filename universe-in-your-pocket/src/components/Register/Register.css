@@ -1,0 +1,27 @@
+.registration {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 100px auto 0;
+}
+.create_acc {
+  font-size: 30px;
+  font-weight: 700;
+}
+.registration input {
+  margin: 10px 20px;
+  border-radius: 8px;
+}
+.create_btn {
+  border: none;
+  background-color: #42f566;
+  border-radius: 8px;
+  color: black;
+  font-weight: 700;
+  padding: 5px 10px;
+  margin-top: 10px;
+}

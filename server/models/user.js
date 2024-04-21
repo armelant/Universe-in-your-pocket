@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+//Create a schema for our table user
+
 const userSchema = new mongoose.Schema(
   {
     fullName: {
@@ -21,5 +23,6 @@ const userSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+const User = mongoose.model('user', userSchema);
 
-module.exports = mongoose.model('user', userSchema);
+module.exports = User;
