@@ -1,26 +1,40 @@
-
 const Header = () => {
-    return (
-    <>
-      <div className="navbar">
+  return (
+    <header className="header">
       <div className="navBrand">
-        <a href="/">
-        <img src={require("../../img/logo.png")} alt="logo" className="logo" />
-        <span className="companyName">COSMOPOCKET</span>
+        <a href="/" class="navBrand__link">
+          <img
+            src={require("../../img/logo.png")}
+            alt="logo"
+            className="header__logo"
+          />
+          <span className="companyName">COSMOPOCKET</span>
         </a>
       </div>
-      </div>
-      <div className="navMenu">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/News">News</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </div>
-
-
-    </>
-    );
+      <ul className="navMenu menu">
+        <li>
+          <a href="/" className="navMenu__link">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="/News" className="navMenu__link">
+            News
+          </a>
+        </li>
+        <li>
+          <a href="/Blog" className="navMenu__link">
+            Blog
+          </a>
+        </li>
+        <li>
+          <a href="/registration" className="navMenu__link">
+            Registration
+          </a>
+        </li>
+      </ul>
+    </header>
+  );
 };
 
 export default Header;
