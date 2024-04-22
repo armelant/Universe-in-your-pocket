@@ -53,7 +53,17 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 app.use(express.json());
+app.use(
+  cors({
+    origin: 'http://localhost:3001',
+    credentials: true,
+  })
+);
 
+app.use((req, res, next) => {
+  console.log('Incoming request from origin:', req.headers.origin);
+  next();
+});
 // Get a request to get a static file
 app.use('/uploads', express.static('uploads'));
 
