@@ -21,6 +21,16 @@ class Api {
       },
     }).then(this._handleResponse);
   }
+  // getPosts(token) {
+  //   // request posts from server
+  //   return fetch(`${this._url}/posts`, {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   }).then(this._handleResponse);
+  // }
 }
 
 const api = new Api({

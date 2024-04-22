@@ -6,6 +6,7 @@ import "./styles/main.css";
 import Main from "./components/Main/Main.js";
 import Header from "./components/Header/Header.js";
 import News from "./components/News/News.js";
+import Blog from "./components/Blog/Blog.js";
 import Register from "./components/Register/Register.js";
 import Authorization from "./components/Authorization/Authorization.js";
 
@@ -13,6 +14,7 @@ const App = () => {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
+  // const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
@@ -31,6 +33,16 @@ const App = () => {
           localStorage.removeItem("jwt");
         });
     }
+
+    // Posts
+    //   api
+    //     .getPosts()
+    //     .then((postsData) => {
+    //       setPosts(postsData);
+    //     })
+    //     .catch((error) => {
+    //       console.log("Error fetching posts:", error);
+    //     });
   }, [userEmail, userName]);
 
   const handleRegistration = ({ fullName, email, password }) => {
@@ -79,6 +91,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/news" element={<News />} />
+        <Route path="/blog" element={<Blog />} />
         <Route
           path="/registration"
           element={<Register onRegister={handleRegistration} />}

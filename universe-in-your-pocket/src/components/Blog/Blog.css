@@ -1,0 +1,39 @@
+img.sunImg {
+    max-width: 30%;
+    margin-right: 20px;
+  }
+  
+  .post {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 20px;
+  }
+  
+  .white-background {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    flex-grow: 1;
+  }
+  
+  .text h2 {
+    margin: 0;
+    text-align: center;
+  }
+  .info {
+    margin: 0;
+    color: #888;
+    font-size: .8rem;
+    font-weight: bold;
+    display: flex;
+    gap: 10px;
+  }
+  .author {
+    color: #333;
+  }
+  .summary {
+    margin: 15px 0;
+    line-height: 1.4rem;
+  }
+  
