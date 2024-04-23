@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const mongoose = require('mongoose');
+var cors = require('cors');
 const {
   loginValidation,
   registerValidation,

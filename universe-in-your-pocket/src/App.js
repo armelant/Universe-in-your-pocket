@@ -6,7 +6,7 @@ import "./styles/main.css";
 import Main from "./components/Main/Main.js";
 import Header from "./components/Header/Header.js";
 import News from "./components/News/News.js";
-import Blog from "./components/Blog/Blog.js";
+import Blogs from "./components/Blogs/Blogs.js";
 import Register from "./components/Register/Register.js";
 import Authorization from "./components/Authorization/Authorization.js";
 
@@ -14,36 +14,27 @@ const App = () => {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
-  // const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
-      api
-        .getPersonalInformation(jwt)
-        .then((userData) => {
+      Promise.all([api.getPersonalInformation(jwt), api.getPosts()])
+        .then(([userData, postsData]) => {
           setIsAuthorized(true);
           setUserName(userData.fullName);
           setUserEmail(userData.email);
+          setPosts(postsData);
           console.log(userName);
           console.log(userEmail);
+          console.log(posts);
         })
         .catch((error) => {
           console.log(error);
           localStorage.removeItem("jwt");
         });
     }
-
-    // Posts
-    //   api
-    //     .getPosts()
-    //     .then((postsData) => {
-    //       setPosts(postsData);
-    //     })
-    //     .catch((error) => {
-    //       console.log("Error fetching posts:", error);
-    //     });
-  }, [userEmail, userName]);
+  }, []);
 
   const handleRegistration = ({ fullName, email, password }) => {
     auth
@@ -87,11 +78,13 @@ const App = () => {
 
   return (
     <div>
-      <Header />
+      <Header isAuthorized={isAuthorized} />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/news" element={<News />} />
-        <Route path="/blog" element={<Blog />} />
+        {isAuthorized && (
+          <Route path="/blog" element={<Blogs posts={posts} />} />
+        )}
         <Route
           path="/registration"
           element={<Register onRegister={handleRegistration} />}
