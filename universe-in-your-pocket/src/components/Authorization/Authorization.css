@@ -1,24 +1,43 @@
 .authorization {
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    align-items: center;
-    background-color: white;
-    border-radius: 20px;
-    padding: 30px;
-    margin: 100px auto 0;
-  }
-  .authorization input {
-    margin: 10px 20px;
-    border-radius: 8px;
-  }
-  .login_btn {
-    border: none;
-    background-color: #42f566;
-    border-radius: 8px;
-    color: black;
-    font-weight: 700;
-    padding: 5px 10px;
-    margin-top: 10px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 100px auto 0;
+  width: 500px;
+}
+
+.login_acc {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.authorization input {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.login_btn {
+  width: 200px;
+  padding: 12px;
+  border: none;
+  background-color: #42f566;
+  border-radius: 8px;
+  color: black;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.login_btn:hover {
+  background-color: #3ac35b;
+}

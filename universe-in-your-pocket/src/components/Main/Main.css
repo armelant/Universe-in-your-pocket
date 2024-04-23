@@ -76,20 +76,26 @@
 .content2__button {
   width: 200px;
   height: 53px;
-  background: #d9d9d9;
+  background: #d9d9d9; 
   border-radius: 10px;
-  border-color: #d9d9d900;
-
+  border: none;
+  outline: none;
   font-family: "Courier Prime";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
-  line-height: 22px;
-  text-align: center;
-  line-height: 51px;
-
   color: #8094c2;
+  text-align: center;
+  line-height: 53px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
+.content2__button:hover {
+  background: #c2c2c2;
+}
+
+
 
 /* .newsImg img {
   width: 500px;
