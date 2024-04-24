@@ -11,14 +11,14 @@ const postSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    tags: {
-      type: Array,
-      default: [],
-    },
-    viewsCount: {
-      type: Number,
-      default: 0,
-    },
+    // tags: {
+    //   type: Array,
+    //   default: [],
+    // },
+    // viewsCount: {
+    //   type: Number,
+    //   default: 0,
+    // },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'user', // relationship between two tables

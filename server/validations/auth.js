@@ -25,7 +25,7 @@ const postCreateValidation = [
     .isLength({ min: 3 })
     .isString(),
   body('text', 'Type the text of the article').isLength({ min: 3 }).isString(),
-  body('tags', 'Invalid tag format').optional().isString(),
+  // body('tags', 'Invalid tag format').optional().isString(),
   body('imageUrl', 'Invalid link to image').optional().isString(),
 ];
 
