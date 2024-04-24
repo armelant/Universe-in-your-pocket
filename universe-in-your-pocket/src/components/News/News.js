@@ -1,14 +1,19 @@
+
+
 const News = () => {
-  const date = [
-    { name: "jhjhhhh", date: "2024" },
-    { name: "jhjhhhh", date: "2024" },
-    { name: "jhjhhhh", date: "2024" },
-    { name: "jhjhhhh", date: "2024" },
-  ];
 
   return (
     <main className="main">
-      <div className="news">
+
+
+
+
+
+
+
+
+
+      {/* <div className="news">
         <div className="newsBox">
           <div className="newsContent">
             <p>
@@ -34,7 +39,7 @@ const News = () => {
           alt="newsImg"
           className="newsImg"
         />
-      </div>
+      </div> */}
     </main>
   );
 };
