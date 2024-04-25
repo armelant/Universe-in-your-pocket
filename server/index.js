@@ -5,11 +5,13 @@ const {
   loginValidation,
   registerValidation,
   postCreateValidation,
+  newsCreateValidation,
 } = require('./validations/auth.js');
 const checkAuth = require('./utils/checkAuth.js');
 const handleValidationErrors = require('./utils/handleValidationErrors.js');
 const userController = require('./controllers/userController.js');
 const postController = require('./controllers/postController.js');
+const NewsController = require('./controllers/NewsController.js');
 
 //Constants
 // const PORT = process.env.PORT;
@@ -108,3 +110,8 @@ app.listen(3000, (err) => {
 
   console.log('Server OK');
 });
+
+
+app.get('/news', NewsController.getAll);
+
+app.post('/news', newsCreateValidation, NewsController.create);
