@@ -54,6 +54,13 @@ const storage = multer.diskStorage({
 // function that allows us to use multer
 const upload = multer({ storage });
 
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
+
 app.use(express.json());
 
 // Get a request to get a static file
