@@ -193,9 +193,45 @@ color: #ebf4f8;
 
     color: #8094C2;
 
-
-
 }
+
+.apodContent {
+    position: absolute;
+    left: 5%;
+    top: 105%;
+}
+
+.apodContent > .apodTitle {
+    position: absolute;
+    left: 50%;
+    bottom: 40%;
+    width: 420px;
+    height: 241px;
+    font-family: 'Lexend', sans-serif; 
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 70px;
+    color: #FEFEFF;
+}
+
+.apodContent > .apodExplanation {
+    position: absolute;
+    left: 50%;
+    width: 420px;
+    height: auto;
+    top: 25%;
+    font-family: 'Courier Prime', monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    color: #B1B9CC;
+    background-color: #2a2d3e;
+    padding: 10px;
+    border-radius: 8px;
+}
+
 
 .newsImg img {
     width: 500px;
