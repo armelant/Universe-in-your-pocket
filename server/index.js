@@ -120,5 +120,7 @@ app.listen(3000, (err) => {
 
 
 app.get('/news', NewsController.getAll);
+app.get('/news/:id', NewsController.getOne)
+
 
 app.post('/news', newsCreateValidation, NewsController.create);

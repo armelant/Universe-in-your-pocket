@@ -33,8 +33,33 @@ const getAll = async (req, res) => {
     }
 }
 
+const getOne = async (req, res) => {
+    try {
+        const newsId = req.params.id;
+
+        const doc = await NewsModel.findOne({ _id: newsId });
+
+        if (!doc) {
+            return res.status(404).json({
+                message: 'News not found'
+            });
+        }
+
+        res.json(doc);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            message: 'Internal server error'
+        });
+    }
+}
+
+
+
+
 module.exports = {
     getAll,
     create,
+    getOne,
   };
   
