@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-const Header = ({ isAuthorized }) => {
+const Header = ({ isAuthorized, logOut }) => {
   return (
     <header className="header">
       <div className="navBrand">
@@ -30,11 +30,19 @@ const Header = ({ isAuthorized }) => {
             </Link>
           </li>
         )}
-        <li>
-          <Link to="/registration" className="navMenu__link">
-            Registration
-          </Link>
-        </li>
+        {isAuthorized ? (
+          <li onClick={logOut}>
+            <Link to="/" className="navMenu__link">
+              Log out
+            </Link>
+          </li>
+        ) : (
+          <li>
+            <Link to="/registration" className="navMenu__link">
+              Registration
+            </Link>
+          </li>
+        )}
       </ul>
     </header>
   );

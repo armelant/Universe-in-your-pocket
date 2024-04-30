@@ -48,21 +48,4 @@
   border-radius: 5px;
 }
 
-.create_btn {
-  width: 150px;
-  padding: 12px;
-  margin: 20px auto 0; 
-  background-color: #42f566;
-  border: none;
-  border-radius: 5px;
-  color: #000;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  display: block;
-}
-
-.create_btn:hover {
-  background-color: #35cc4b;
-}
 

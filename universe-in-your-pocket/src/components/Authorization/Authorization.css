@@ -24,20 +24,20 @@
   font-size: 16px;
 }
 
-.login_btn {
+.submit_btn {
   width: 200px;
   padding: 12px;
   border: none;
-  background-color: #42f566;
   border-radius: 8px;
+  border: 2px solid;
   color: black;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin-top: 20px;
 }
 
-.login_btn:hover {
-  background-color: #3ac35b;
+.submit_btn:hover {
+  background-color: lightgray;
 }
