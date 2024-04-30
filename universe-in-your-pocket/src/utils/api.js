@@ -28,6 +28,26 @@ class Api {
       headers: this.headers,
     }).then(this._handleResponse);
   }
+
+  createPost(data) {
+    const userId = localStorage.getItem("userId");
+    // Creating a new post on the server
+
+    return fetch(`${this._url}/posts`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        title: data.title,
+        text: data.text,
+        imageUrl: data.imageUrl,
+        user: data.user,
+      }),
+    }).then(this._handleResponse);
+  }
 }
 
 const api = new Api({

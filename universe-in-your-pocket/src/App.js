@@ -13,7 +13,7 @@ import Authorization from "./components/Authorization/Authorization.js";
 const App = () => {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
+  const [userId, setUserId] = useState("");
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -23,25 +23,22 @@ const App = () => {
         .then(([userData, postsData]) => {
           setIsAuthorized(true);
           setUserName(userData.fullName);
-          setUserEmail(userData.email);
           setPosts(postsData);
-          console.log(userName);
-          console.log(userEmail);
-          console.log(posts);
+          setUserId(userData._id);
         })
         .catch((error) => {
           console.log(error);
           localStorage.removeItem("jwt");
         });
     }
-  }, []);
+  }, [isAuthorized]);
 
   const handleRegistration = ({ fullName, email, password }) => {
     auth
       .registration({ fullName, email, password })
       .then((res) => {
         if (res) {
-          console.log(res);
+          setIsAuthorized(true);
         } else {
           Promise.reject(`Error ${res}`);
         }
@@ -59,8 +56,9 @@ const App = () => {
     auth
       .authorize(data)
       .then((res) => {
-        console.log(res);
         localStorage.setItem("jwt", res.token);
+        localStorage.setItem("userId", res._id);
+        setIsAuthorized(true);
       })
       .catch((error) => {
         setIsAuthorized(false);
@@ -76,14 +74,48 @@ const App = () => {
       });
   };
 
+  // Create post
+  const handleCreatePost = (post) => {
+    api
+      .createPost(post)
+      .then((newPost) => {
+        setPosts([newPost, ...posts]);
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("Error creating post: " + error.message);
+      });
+  };
+
+  const logOut = () => {
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("userId");
+    setIsAuthorized(false);
+    setUserName("");
+    setPosts([]);
+  };
+
   return (
     <div>
-      <Header isAuthorized={isAuthorized} />
+      <Header isAuthorized={isAuthorized} logOut={logOut} />
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route
+          path="/"
+          element={<Main isAuthorized={isAuthorized} userName={userName} />}
+        />
         <Route path="/news" element={<News />} />
         {isAuthorized && (
-          <Route path="/blog" element={<Blogs posts={posts} />} />
+          <Route
+            path="/blog"
+            element={
+              <Blogs
+                posts={posts}
+                handleCreatePost={handleCreatePost}
+                userId={userId}
+              />
+            }
+          />
         )}
         <Route
           path="/registration"
