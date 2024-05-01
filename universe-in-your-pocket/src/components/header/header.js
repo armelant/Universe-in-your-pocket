@@ -1,36 +1,38 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <header className="header">
       <div className="navBrand">
-        <a href="/" class="navBrand__link">
+        <Link to="/" class="navBrand__link">
           <img
             src={require("../../img/logo.png")}
             alt="logo"
             className="header__logo"
           />
           <span className="companyName">COSMOPOCKET</span>
-        </a>
+        </Link>
       </div>
       <ul className="navMenu menu">
         <li>
-          <a href="/" className="navMenu__link">
+          <Link to="/" className="navMenu__link">
             Home
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/News" className="navMenu__link">
+          <Link to="/News" className="navMenu__link">
             News
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/Blog" className="navMenu__link">
+          <Link to="/Blog" className="navMenu__link">
             Blog
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/registration" className="navMenu__link">
+          <Link to="/registration" className="navMenu__link">
             Registration
-          </a>
+          </Link>
         </li>
       </ul>
     </header>

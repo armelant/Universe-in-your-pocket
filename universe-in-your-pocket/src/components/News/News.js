@@ -16,16 +16,14 @@ const News = () => {
         <div className="news" key={item._id}>
           <div className="newsBox">
             <div className="newsContent">
-              <h2>{item.title}</h2>
+              <h1>{item.title}</h1>
               {item.text.split('\n\n').map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
-            </div>
-            {item.imageUrl && (
-              <div className="newsImage">
+              {item.imageUrl && (
                 <img src={item.imageUrl} alt="News" />
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       ))}
