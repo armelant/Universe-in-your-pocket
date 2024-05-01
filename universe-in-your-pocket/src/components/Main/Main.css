@@ -1,5 +1,6 @@
 .main {
   display: flex;
+  font-family: "Courier Prime";
   flex-direction: column;
   margin: 0 autos;
   padding: 32px;
@@ -20,12 +21,21 @@
   color: #fefeff;
 }
 
+.userName {
+  font-family: "Lexend";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 40px;
+
+  color: #fefeff;
+}
+
 .contentContent {
   width: 420px;
   height: 78px;
   top: 250px;
 
-  font-family: "Courier Prime";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -35,14 +45,14 @@
 }
 
 .content1__button {
-  font-family: "Courier Prime";
   font-style: normal;
   font-weight: 400;
   font-size: 17px;
   line-height: 19px;
   line-height: 51px;
-
   color: #b1b9cc;
+
+
   width: 165px;
   height: 54px;
 
@@ -76,44 +86,21 @@
 .content2__button {
   width: 200px;
   height: 53px;
-  background: #d9d9d9;
+  background: #d9d9d9; 
   border-radius: 10px;
-  border-color: #d9d9d900;
-
+  border: none;
+  outline: none;
   font-family: "Courier Prime";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
-  line-height: 22px;
   text-align: center;
-  line-height: 51px;
-
-  color: #8094c2;
+  line-height: 53px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* .newsImg img {
-  width: 500px;
-  height: 500px;
-  position: fixed;
-  top: 100px;
-  left: 55%;
-  border-radius: 15px;
-  right: 0;
+.content2__button:hover {
+  background: #c2c2c2;
 }
 
-.newsBox {
-  width: 500px;
-  height: 50px;
-
-  font-family: "Courier Prime";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 22px;
-  text-align: left;
-
-  color: #ebf4f8;
-
-  margin-left: 5%;
-  margin-top: 50px;
-} */

@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 
-const Header = () => {
+
+const Header = ({ isAuthorized, logOut }) => {
   return (
     <header className="header">
       <div className="navBrand">
-        <Link to="/" class="navBrand__link">
+        <Link to="/" className="navBrand__link">
           <img
             src={require("../../img/logo.png")}
             alt="logo"
@@ -24,16 +25,26 @@ const Header = () => {
             News
           </Link>
         </li>
-        <li>
-          <Link to="/Blog" className="navMenu__link">
-            Blog
-          </Link>
-        </li>
-        <li>
-          <Link to="/registration" className="navMenu__link">
-            Registration
-          </Link>
-        </li>
+        {isAuthorized && (
+          <li>
+            <Link to="/blog" className="navMenu__link">
+              Blog
+            </Link>
+          </li>
+        )}
+        {isAuthorized ? (
+          <li onClick={logOut}>
+            <Link to="/" className="navMenu__link">
+              Log out
+            </Link>
+          </li>
+        ) : (
+          <li>
+            <Link to="/registration" className="navMenu__link">
+              Registration
+            </Link>
+          </li>
+        )}
       </ul>
     </header>
   );
