@@ -4,7 +4,7 @@ import api from "./utils/api.js";
 import { useState, useEffect } from "react";
 import "./styles/main.css";
 import Main from "./components/Main/Main.js";
-import Header from "./components/Header/Header.js";
+import Header from "./components/Header/header.js";
 import News from "./components/News/News.js";
 import Blogs from "./components/Blogs/Blogs.js";
 import Register from "./components/Register/Register.js";
@@ -105,6 +105,7 @@ const App = () => {
           element={<Main isAuthorized={isAuthorized} userName={userName} />}
         />
         <Route path="/news" element={<News />} />
+
         {isAuthorized && (
           <Route
             path="/blog"
@@ -125,6 +126,11 @@ const App = () => {
           path="/authorization"
           element={<Authorization onAuthorized={handleAuthorization} />}
         ></Route>
+
+        {/* <Route path="/news/:id" element={<NewsPage />} /> */}
+        <Route path="/registration" element={<Register />} />
+        <Route path="/authorization" element={<Authorization />}></Route>
+
       </Routes>
     </div>
   );

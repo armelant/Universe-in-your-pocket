@@ -7,11 +7,13 @@ const {
   loginValidation,
   registerValidation,
   postCreateValidation,
+  newsCreateValidation,
 } = require('./validations/auth.js');
 const checkAuth = require('./utils/checkAuth.js');
 const handleValidationErrors = require('./utils/handleValidationErrors.js');
 const userController = require('./controllers/userController.js');
 const postController = require('./controllers/postController.js');
+const NewsController = require('./controllers/NewsController.js');
 
 // Constants;
 const DB_USER = process.env.DB_USER;
@@ -50,6 +52,13 @@ const storage = multer.diskStorage({
 
 // function that allows us to use multer
 const upload = multer({ storage });
+
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 
 app.use(express.json());
 app.use(
@@ -116,3 +125,10 @@ app.listen(PORT, (err) => {
 
   console.log('Server OK');
 });
+
+
+app.get('/news', NewsController.getAll);
+app.get('/news/:id', NewsController.getOne)
+
+
+app.post('/news', newsCreateValidation, NewsController.create);

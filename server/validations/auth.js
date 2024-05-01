@@ -32,8 +32,16 @@ const postCreateValidation = [
   body('imageUrl', 'Invalid link to image').optional().isString(),
 ];
 
+const newsCreateValidation = [
+  body('title', 'Enter title').isLength({min: 3}).isString(),
+  body('text', 'Enter text').isLength({ min: 10 }).isString(),
+  body('imageUrl', 'invalid url').optional().isString(),
+];
+
 module.exports = {
   loginValidation,
   registerValidation,
   postCreateValidation,
+  newsCreateValidation,
+
 };
