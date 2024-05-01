@@ -1,0 +1,106 @@
+.main {
+  display: flex;
+  font-family: "Courier Prime";
+  flex-direction: column;
+  margin: 0 autos;
+  padding: 32px;
+}
+
+.content1 {
+  width: 320px;
+  height: 241px;
+}
+
+.contentTitle {
+  font-family: "Lexend";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 46px;
+  line-height: 50px;
+
+  color: #fefeff;
+}
+
+.userName {
+  font-family: "Lexend";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 40px;
+
+  color: #fefeff;
+}
+
+.contentContent {
+  width: 420px;
+  height: 78px;
+  top: 250px;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+
+  color: #b1b9cc;
+}
+
+.content1__button {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 19px;
+  line-height: 51px;
+  color: #b1b9cc;
+
+
+  width: 165px;
+  height: 54px;
+
+  background: #101a31;
+  border-radius: 60px;
+  border-color: #101a3100;
+}
+
+.content2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 58%;
+  margin-top: 20%;
+}
+
+.contentContent2 {
+  width: 450px;
+  height: 50px;
+
+  font-family: "Courier Prime";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 22px;
+  text-align: center;
+
+  color: #ebf4f8;
+}
+
+.content2__button {
+  width: 200px;
+  height: 53px;
+  background: #d9d9d9; 
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-family: "Courier Prime";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+  line-height: 53px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.content2__button:hover {
+  background: #c2c2c2;
+}
+

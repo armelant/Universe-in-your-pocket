@@ -1,0 +1,43 @@
+.authorization {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 100px auto 0;
+  width: 500px;
+}
+
+.login_acc {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.authorization input {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.submit_btn {
+  width: 200px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  border: 2px solid;
+  color: black;
+  font-weight: 700;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.submit_btn:hover {
+  background-color: lightgray;
+}

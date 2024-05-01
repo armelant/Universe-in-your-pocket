@@ -1,37 +1,50 @@
-import './header.css';
-
-const Header = () => {
+import { Link } from "react-router-dom";
+const Header = ({ isAuthorized, logOut }) => {
   return (
-    <>
-      <div className="navbar">
-        <div className="navBrand">
-          <a href="/">
-            <img
-              src={require('../../img/logo.png')}
-              alt="logo"
-              className="logo"
-            />
-            <span className="companyName">!!!!COSMOPOCKET</span>
-          </a>
-        </div>
+    <header className="header">
+      <div className="navBrand">
+        <Link to="/" className="navBrand__link">
+          <img
+            src={require("../../img/logo.png")}
+            alt="logo"
+            className="header__logo"
+          />
+          <span className="companyName">COSMOPOCKET</span>
+        </Link>
       </div>
-      <div className="navMenu">
-        <ul>
+      <ul className="navMenu menu">
+        <li>
+          <Link to="/" className="navMenu__link">
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/News" className="navMenu__link">
+            News
+          </Link>
+        </li>
+        {isAuthorized && (
           <li>
-            <a href="/">Home</a>
+            <Link to="/blog" className="navMenu__link">
+              Blog
+            </Link>
           </li>
+        )}
+        {isAuthorized ? (
+          <li onClick={logOut}>
+            <Link to="/" className="navMenu__link">
+              Log out
+            </Link>
+          </li>
+        ) : (
           <li>
-            <a href="/News">News</a>
+            <Link to="/registration" className="navMenu__link">
+              Registration
+            </Link>
           </li>
-          <li>
-            <a href="/News">Blog</a>
-          </li>
-          <li>
-            <a href="/contact">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </>
+        )}
+      </ul>
+    </header>
   );
 };
 

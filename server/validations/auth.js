@@ -22,10 +22,13 @@ const registerValidation = [
 // Validation for articles
 const postCreateValidation = [
   body('title', 'Type the title of the article')
+    .optional()
     .isLength({ min: 3 })
     .isString(),
-  body('text', 'Type the text of the article').isLength({ min: 3 }).isString(),
-  body('tags', 'Invalid tag format').optional().isString(),
+  body('text', 'Type the text of the article')
+    .optional()
+    .isLength({ min: 3 })
+    .isString(),
   body('imageUrl', 'Invalid link to image').optional().isString(),
 ];
 

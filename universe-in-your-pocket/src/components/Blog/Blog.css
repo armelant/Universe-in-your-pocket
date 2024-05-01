@@ -1,0 +1,58 @@
+.post {
+  display: flex;
+  font-family: "Courier Prime";
+  justify-content: center;
+  gap: 34px;
+  margin-bottom: 20px;
+}
+
+.image {
+  max-width: 350px;
+  max-width: 350px;
+  border-radius: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  gap: 16px;
+  height: 350px;
+  width: 670px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  flex-grow: 1;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  margin: 0;
+}
+
+.user-info {
+  font-size: 16px;
+  font-weight: 300;
+  list-style: 26px;
+  margin: 0;
+  color: #888;
+  display: flex;
+}
+
+.summary {
+  font-size: 18px;
+  font-weight: 300;
+  list-style: 24px;
+  margin: 15px 0;
+  line-height: 1.4rem;
+  text-wrap: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

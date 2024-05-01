@@ -1,0 +1,60 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  margin-bottom: 32px;
+  font-family: "Courier Prime";
+  gap: 8px;
+  width: 400px;
+}
+
+.form-title {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 300;
+  color: #b1b9cc;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-input {
+  background-color: #fff;
+  border: 2px solid #ffff;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  margin: 0;
+  outline: none;
+  padding: 8px 16px;
+  resize: none;
+  width: inherit;
+}
+
+.form-input:hover {
+  background-color: #b1b9cc;
+  cursor: pointer;
+}
+
+.form-textarea {
+  height: 150px;
+}
+
+.form-button {
+  padding: 8px 24px;
+  background-color: #ffff;
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 500;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  max-width: 200px;
+  align-self: flex-end;
+}
+
+.form-button:hover {
+  opacity: 0.8;
+}
