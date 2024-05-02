@@ -85,7 +85,7 @@ const App = () => {
         localStorage.setItem("admin_jwt", res.token);
         localStorage.setItem("adminId", res._id);
         setIsAuthorized(true);
-        setIsAdmin(true)
+        setIsAdmin(true);
       })
       .catch((error) => {
         setIsAuthorized(false);
@@ -99,6 +99,11 @@ const App = () => {
           );
         console.log(error);
       });
+  };
+
+  const handleAdminAuthorize = (adminData) => {
+    // Реализация вашей логики аутентификации администратора
+    console.log('Admin authorization data:', adminData);
   };
 
   // Create post
@@ -156,7 +161,10 @@ const App = () => {
           element={<Authorization onAuthorized={handleAuthorization} />}
         ></Route>
 
-        <Route path="/adminLogin" element={<AdminLogin />}/>
+        <Route
+          path="/adminLogin"
+          element={<AdminLogin onAdminAuthorized={handleAdminAuthorize} />}
+        />  
 
         <Route path="/registration" element={<Register />} />
         <Route path="/authorization" element={<Authorization />}/>

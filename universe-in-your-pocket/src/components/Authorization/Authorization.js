@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InputField from "../InputField/InputField";
 
+
 const Authorization = ({ onAuthorized }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

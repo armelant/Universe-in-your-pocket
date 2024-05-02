@@ -1,26 +1,29 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InputField from "../InputField/InputField";
+import auth from "../../utils/auth.js";
 
-const AdminLogin = ({ onadminAuthorize }) => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const navigate = useNavigate();
-  
-    function handleSubmit(e) {
-      e.preventDefault(); 
-      onadminAuthorize({
-       
-        email: email,
-        password: password,
-      });
-  
-      navigate("/");
-    }
+const Authorization = ({ onAuthorized }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  function handleSubmit(e) {
+    e.preventDefault(); 
+    console.log("Form submitted!");
+
+    onAuthorized({
+      
+      email: email,
+      password: password,
+    });
+
+    navigate("/");
+  }
 
   return (
     <main className="main">
-      <div className="login">
+      <div className="authorization">
         <form onSubmit={handleSubmit}>
           <label className="login_acc">Login in the account</label>
           <InputField
@@ -42,4 +45,4 @@ const AdminLogin = ({ onadminAuthorize }) => {
   );
 };
 
-export default AdminLogin;
+export default Authorization;
