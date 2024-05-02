@@ -20,7 +20,7 @@ const Authorization = ({ onAuthorized }) => {
   }
 
   return (
-    <main className="main">
+    <main className="main" aria-label="Login Form">
       <div className="authorization">
         <form onSubmit={handleSubmit}>
           <label className="login_acc">Login in the account</label>
@@ -29,12 +29,14 @@ const Authorization = ({ onAuthorized }) => {
             setValue={setEmail}
             type="text"
             placeholder="Enter email..."
+            aria-label="Email"
           />
           <InputField
             value={password}
             setValue={setPassword}
             type="password"
             placeholder="Enter password..."
+            aria-label="Password"
           />
           <button className="submit_btn">Login</button>
         </form>

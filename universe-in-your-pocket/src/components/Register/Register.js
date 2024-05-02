@@ -21,7 +21,7 @@ const Register = ({ onRegister }) => {
     navigate("/authorization");
   }
   return (
-    <main className="main">
+    <main className="main" aria-label="Registration Form">
       <div className="registration">
         <form onSubmit={handleSubmit}>
           <div className="create_acc">Create new account</div>
@@ -30,18 +30,21 @@ const Register = ({ onRegister }) => {
             setValue={setFullName}
             type="text"
             placeholder="Enter your full name..."
+            aria-label="Full Name"
           />
           <InputField
             value={email}
             setValue={setEmail}
             type="text"
             placeholder="Enter email..."
+            aria-label="Email"
           />
           <InputField
             value={password}
             setValue={setPassword}
             type="password"
             placeholder="Enter password..."
+            aria-label="Password"
           />
           <button type="submit" className="submit_btn">
             Create
