@@ -13,7 +13,7 @@ const News = () => {
   return (
     <main className="main">
       {news.map((item) => (
-        <div className="post" key={item._id}>
+        <div className="news" key={item._id}>
           <img src={item.imageUrl} alt="sunImg" className="image" />
           <div className="text">
             <div className="text-container">

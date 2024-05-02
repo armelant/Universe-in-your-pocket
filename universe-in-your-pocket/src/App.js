@@ -11,6 +11,7 @@ import Register from "./components/Register/Register.js";
 import Authorization from "./components/Authorization/Authorization.js";
 import AdminLogin from "./components/Authorization/adminLogin.js";
 import AdminPage from "./components/AdminPage/adminPage.js";
+import Potd from "./components/POTD/POTD.js";
 
 const App = () => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -160,6 +161,7 @@ const App = () => {
         <Route path="/registration" element={<Register />} />
         <Route path="/authorization" element={<Authorization />}/>
         <Route path="/adminPage" element={<AdminPage />}/>
+        <Route path="/POTD" element={<Potd />} />
 
         
 

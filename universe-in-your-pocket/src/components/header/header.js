@@ -15,6 +15,11 @@ const Header = ({ isAuthorized, isAdmin, logOut }) => {
       </div>
       <ul className="navMenu menu">
         <li>
+          <Link to="/POTD" className="navMenu__link">
+            POTD
+          </Link>
+        </li>
+        <li>
           <Link to="/" className="navMenu__link">
             Home
           </Link>
