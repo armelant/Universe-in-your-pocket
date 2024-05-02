@@ -1,48 +1,59 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import InputField from "../InputField/InputField";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import auth from "../../utils/auth.js";
 
-const Authorization = ({ onAuthorized }) => {
+const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  function handleSubmit(e) {
-    e.preventDefault(); 
-    console.log("Form submitted!");
-
-    onAuthorized({
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    console.log("Email:", email);
+    console.log("Password:", password);
+    
+    
+    try {
+      const response = await auth.adminAuthorization({ email, password });
       
-      email: email,
-      password: password,
-    });
+      console.log("Server response:", response);
 
-    navigate("/");
-  }
+      localStorage.setItem("isAdmin", "true");
+      
+      navigate("/");
+      
+     
+      
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <main className="main">
-      <div className="authorization">
+      <div className="login">
         <form onSubmit={handleSubmit}>
           <label className="login_acc">Login in the account</label>
-          <InputField
-            value={email}
-            setValue={setEmail}
+          <input
             type="text"
             placeholder="Enter email..."
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
-          <InputField
-            value={password}
-            setValue={setPassword}
+          <input
             type="password"
             placeholder="Enter password..."
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="submit_btn">Login</button>
+          <button type="submit" className="submit_btn">
+            Login
+          </button>
         </form>
       </div>
     </main>
   );
 };
 
-export default Authorization;
+export default AdminLogin;

@@ -1,9 +1,10 @@
+// Ваш класс Auth
 class Auth {
   constructor(options) {
     this._url = options.url;
     this._headers = options.headers;
   }
-
+  
   _handleResponse(res) {
     if (res.ok) {
       return res.json();
@@ -29,7 +30,7 @@ class Auth {
     }).then(this._handleResponse);
   }
 
-  adminAuthorize(data) {
+  adminAuthorization(data) {
     return fetch(`${this._url}/admin/login`, {
       method: "POST",
       credentials: "include",
@@ -45,5 +46,4 @@ const auth = new Auth({
     "Content-Type": "application/json",
   },
 });
-
 export default auth;

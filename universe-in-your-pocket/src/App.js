@@ -101,11 +101,6 @@ const App = () => {
       });
   };
 
-  const handleAdminAuthorize = (adminData) => {
-    // Реализация вашей логики аутентификации администратора
-    console.log('Admin authorization data:', adminData);
-  };
-
   // Create post
   const handleCreatePost = (post) => {
     api
@@ -131,7 +126,11 @@ const App = () => {
 
   return (
     <div>
-      <Header isAuthorized={isAuthorized} isAdmin={isAdmin} logOut={logOut} />
+      <Header
+        isAuthorized={isAuthorized}
+        isAdmin={isAdmin}
+        logOut={logOut}
+      />
       <Routes>
         <Route
           path="/"
@@ -159,20 +158,10 @@ const App = () => {
         <Route
           path="/authorization"
           element={<Authorization onAuthorized={handleAuthorization} />}
-        ></Route>
-
-        <Route
-          path="/adminLogin"
-          element={<AdminLogin onAdminAuthorized={handleAdminAuthorize} />}
-        />  
-
-        <Route path="/registration" element={<Register />} />
-        <Route path="/authorization" element={<Authorization />}/>
-        <Route path="/adminPage" element={<AdminPage />}/>
+        />
+        <Route path="/adminLogin" element={<AdminLogin adminAuthorization={adminAuthorization} />} />
+        <Route path="/adminPage" element={<AdminPage />} />
         <Route path="/POTD" element={<Potd />} />
-
-        
-
       </Routes>
     </div>
   );
