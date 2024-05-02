@@ -1,32 +1,85 @@
-<h1>Universe in your pocket</h1>
+# Universe in your pocket
 
 Welcome to the "Universe in your pocket" project! This website is created to provide users with information about space, astronomy, and space missions. Various sections are available to explore space and delve into its mysterious depths.
 
-<h2>About the Project</h2>
+## About the Project
 
-Our project includes the following main components:
+### Our project includes the following main components:
 
-<h3>Home Page:</h3> Here you will find a brief description of the project, as well as the latest news from the world of astronomy.
+## Home Page:
 
-<h3>Articles and News:</h3> In this section, you can read interesting articles and the latest news about space, astronomy, and space missions.
+Here you will find a brief description of the project, as well as the latest news from the world of astronomy.
 
-<h3>Space Blog:</h3> We are excited to introduce a new blog section, where you can share your thoughts, articles, and photos about space. You can create an account here to publish your materials and discuss them with other participants.
+## Articles and News:
 
-<h3>Space Calendar:</h3> View upcoming space events and missions.
+In this section, you can read interesting articles and the latest news about space, astronomy, and space missions.
 
-<h3>Planets and Stars Information:</h3> Detailed information about planets, stars, and other space objects will help you expand your knowledge of the universe.
+## Space Blog:
 
-<h3>Administrator Panel:</h3> A control panel allowing administrators to add, edit, and delete articles, as well as update information about space events and missions.
+We are excited to introduce a new blog section, where you can share your thoughts, articles, and photos about space.
 
-<h3>Accessibility:</h3> We pay special attention to the accessibility of the website for users with disabilities. Visit the accessibility instructions page and tools for accessibility checking.
+## Registration and authorization:
 
-Installation and Usage
+You can create an account to publish your materials for other participants.
 
-The project is currently under development. Installation and usage instructions will be provided here upon completion of development.
+## Administrator Panel:
 
-Contributing to the Project
+A control panel allowing administrators to add, edit, and delete articles, as well as update information about space events and missions.
 
-We invite everyone to contribute to the development of the project. If you have suggestions for improvement, ideas, or you want to contribute, please open an issue or create a pull request in our repository.
+## The following stack was used during development of the project:
 
+- **Express**: Used as the web framework for Node.js to handle HTTP requests and routes.
+- **Mongoose**: MongoDB object modeling tool designed to work in an asynchronous environment, used for data modeling and validation.
+- **MongoDB**: A NoSQL database used for storing application data.
+- **React**: is a JavaScript library for creating user interfaces.
+- **HTML**
+- **CSS**
 
-Thank you for your interest in our project! If you have any questions or suggestions, feel free to contact us.
+## Startup commands
+
+### Backend:
+
+1. To install dependencies:
+
+   ```bash
+   npm init
+   npm install express
+   npm install nodemon --save-dev
+   npm install jsonwebtoken
+   npm install mongoose
+   npm express-validator
+   npm install bcrypt
+   npm install multer
+
+   ```
+
+2. To start the server http://localhost:3000/:
+   ```bash
+   npm run dev
+   ```
+
+### Frontend:
+
+1. To install dependencies:
+
+   ```bash
+   npx create -react -app
+   npm install react react-dom
+   npm install --save react-router-dom
+   ```
+
+2. To start the server http://localhost:3001/:
+
+```bash
+  npm start
+```
+
+## Accesibility:
+
+The project incorporates various enhancements to ensure web accessibility, catering to a diverse range of users. These additions encompass critical features such as high contrast mode, facilitating improved visibility for those with visual impairments, alongside intuitive keyboard navigation, enabling seamless interaction for individuals who rely on alternative input methods.
+
+## Contributers
+
+- [Evgeny Gumenyuk](https://github.com/armelant)
+- [Andrei Susha](https://github.com/AndreiSusha)
+- [Beresnev Timofei](https://github.com/Timo-joinllur)
