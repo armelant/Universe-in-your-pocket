@@ -8,12 +8,16 @@ const {
   registerValidation,
   postCreateValidation,
   newsCreateValidation,
+  adminLoginValidation,
+  adminiRegisterValidation,
 } = require('./validations/auth.js');
 const checkAuth = require('./utils/checkAuth.js');
+const adminCheck = require('./utils/adminCheck.js');
 const handleValidationErrors = require('./utils/handleValidationErrors.js');
 const userController = require('./controllers/userController.js');
 const postController = require('./controllers/postController.js');
 const NewsController = require('./controllers/NewsController.js');
+const AdminController = require('./controllers/adminController.js');
 
 // Constants;
 const DB_USER = process.env.DB_USER;
@@ -90,6 +94,20 @@ app.post(
 );
 app.get('/auth/me', checkAuth, userController.getMe);
 
+app.post(
+  '/admin/login',
+  adminLoginValidation,
+  handleValidationErrors,
+  AdminController.login
+);
+
+app.post(
+  '/admin/register',
+  adminiRegisterValidation,
+  handleValidationErrors,
+  AdminController.register
+);
+
 // Route
 app.post('/upload', checkAuth, upload.single('image'), (req, res) => {
   res.json({
@@ -131,4 +149,4 @@ app.get('/news', NewsController.getAll);
 app.get('/news/:id', NewsController.getOne)
 
 
-app.post('/news', newsCreateValidation, NewsController.create);
+app.post('/news', adminCheck, newsCreateValidation, NewsController.create);

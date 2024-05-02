@@ -13,17 +13,15 @@ const News = () => {
   return (
     <main className="main">
       {news.map((item) => (
-        <div className="news" key={item._id}>
-          <div className="newsBox">
-            <div className="newsContent">
-              <h1>{item.title}</h1>
+        <div className="post" key={item._id}>
+          <img src={item.imageUrl} alt="sunImg" className="image" />
+          <div className="text">
+            <div className="text-container">
+            <h2 className="title">{item.title}</h2>
               {item.text.split('\n\n').map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
+                <p className="summary" key={index}>{paragraph}</p>
               ))}
-              {item.imageUrl && (
-                <img src={item.imageUrl} alt="News" />
-              )}
-            </div>
+              </div>
           </div>
         </div>
       ))}

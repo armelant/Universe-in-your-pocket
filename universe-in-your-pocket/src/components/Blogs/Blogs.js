@@ -3,6 +3,7 @@ import Blog from "../Blog/Blog";
 import AddBlogPage from "../AddBlogPage/AddBlogPage";
 
 const Blogs = ({ posts, handleCreatePost, userId }) => {
+  
   return (
     <main className="main">
       <AddBlogPage handleCreatePost={handleCreatePost} userId={userId} />

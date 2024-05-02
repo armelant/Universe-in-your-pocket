@@ -9,8 +9,24 @@ const loginValidation = [
   }),
 ];
 
+const adminLoginValidation = [
+  body('email', 'Invalid email format').isEmail(),
+  body('password', 'Password must be at least 5 characters').isLength({
+    min: 5,
+  }),
+];
+
 // Registration
 const registerValidation = [
+  body('email', 'Invalid email format').isEmail(),
+  body('password', 'Password must be at least 5 characters').isLength({
+    min: 5,
+  }),
+  body('fullName', 'Enter your name').isLength({ min: 3 }),
+  body('avatarUrl', 'Invalid link to avatar').optional().isURL(),
+];
+
+const adminiRegisterValidation = [
   body('email', 'Invalid email format').isEmail(),
   body('password', 'Password must be at least 5 characters').isLength({
     min: 5,
@@ -43,5 +59,7 @@ module.exports = {
   registerValidation,
   postCreateValidation,
   newsCreateValidation,
+  adminLoginValidation,
+  adminiRegisterValidation,
 
 };
