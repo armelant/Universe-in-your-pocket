@@ -6,7 +6,6 @@ const create = async (req, res) => {
             title: req.body.title,
             text: req.body.text,
             imageUrl: req.body.imageUrl,
-            user: req.userId,
         });
 
         const news = await doc.save();
@@ -54,6 +53,57 @@ const getOne = async (req, res) => {
     }
 }
 
+const remove = async (req, res) => {
+    try {
+      const newsId = req.params.id;
+  
+      const doc = await NewsModel.findOneAndDelete({
+        _id: newsId,
+      });
+  
+      if (!doc) {
+        return res.status(404).json({
+          message: 'Article not found',
+        });
+      }
+  
+      res.json({
+        success: true,
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({
+        message: 'Failed to delete article',
+      });
+    }
+  };
+
+
+  const update = async (req, res) => {
+    try {
+      const newsId = req.params.id;
+  
+      await NewsModel.updateOne(
+        {
+          _id: newsId,
+        },
+        {
+          title: req.body.title,
+          text: req.body.text,
+          imageUrl: req.body.imageUrl,
+        }
+      );
+  
+      res.json({
+        success: true,
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({
+        message: 'Failed to update article',
+      });
+    }
+  };
 
 
 
@@ -61,5 +111,7 @@ module.exports = {
     getAll,
     create,
     getOne,
+    remove,
+    update,
   };
   

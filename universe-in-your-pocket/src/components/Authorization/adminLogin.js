@@ -22,6 +22,8 @@ const AdminLogin = () => {
       localStorage.setItem("isAdmin", "true");
       
       navigate("/");
+
+      console.log(localStorage.getItem("isAdmin"))
       
      
       

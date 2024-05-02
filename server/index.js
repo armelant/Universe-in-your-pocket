@@ -150,3 +150,6 @@ app.get('/news/:id', NewsController.getOne)
 
 
 app.post('/news', adminCheck, newsCreateValidation, NewsController.create);
+
+app.delete('/news/:id', adminCheck, NewsController.remove);
+app.patch('/news/:id', adminCheck, NewsController.update); 

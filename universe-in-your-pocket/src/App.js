@@ -115,6 +115,19 @@ const App = () => {
       });
   };
 
+  const handleCreateNews = (news) => {
+    api
+      .createNews(news)
+      .then((newNews) => {
+        // Handle successful creation of news
+        console.log("News created:", newNews);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("Error creating news: " + error.message);
+      });
+  };
+
   const logOut = () => {
     localStorage.removeItem("jwt");
     localStorage.removeItem("userId");
@@ -160,7 +173,10 @@ const App = () => {
           element={<Authorization onAuthorized={handleAuthorization} />}
         />
         <Route path="/adminLogin" element={<AdminLogin adminAuthorization={adminAuthorization} />} />
-        <Route path="/adminPage" element={<AdminPage />} />
+        <Route
+          path="/adminPage"
+          element={<AdminPage handleCreateNews={handleCreateNews} />}
+        />
         <Route path="/POTD" element={<Potd />} />
       </Routes>
     </div>

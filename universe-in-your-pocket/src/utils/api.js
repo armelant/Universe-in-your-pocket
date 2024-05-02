@@ -8,11 +8,10 @@ class Api {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject("We have found an error."`Error: ${res}`);
+    return Promise.reject(`We have found an error. Error: ${res}`);
   }
 
   getPersonalInformation(token) {
-    //requested information from server about current user
     return fetch(`${this._url}/auth/me`, {
       method: "GET",
       headers: {
@@ -21,18 +20,16 @@ class Api {
       },
     }).then(this._handleResponse);
   }
+
   getPosts() {
-    // request posts from server
     return fetch(`${this._url}/posts`, {
       method: "GET",
-      headers: this.headers,
+      headers: this._headers,
     }).then(this._handleResponse);
   }
 
   createPost(data) {
     const userId = localStorage.getItem("userId");
-    // Creating a new post on the server
-
     return fetch(`${this._url}/posts`, {
       method: "POST",
       credentials: "include",
@@ -44,8 +41,43 @@ class Api {
         title: data.title,
         text: data.text,
         imageUrl: data.imageUrl,
+        user: userId,
+      }),
+    }).then(this._handleResponse);
+  }
+
+  createNews(data) {
+    return fetch(`${this._url}/news`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("admin_jwt")}`,
+      },
+      body: JSON.stringify({
+        title: data.title,
+        text: data.text,
+        imageUrl: data.imageUrl,
         user: data.user,
       }),
+    }).then(this._handleResponse);
+  }
+
+  deletePost(postId) {
+    return fetch(`${this._url}/posts/${postId}`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then(this._handleResponse);
+  }
+
+  updatePost(postId, data) {
+    return fetch(`${this._url}/posts/${postId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(data),
     }).then(this._handleResponse);
   }
 }

@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 
 const Header = ({ isAuthorized, isAdmin, logOut }) => {
+
+  const handleAdminLogout = () => {
+    localStorage.setItem("isAdmin", "false");
+  };
+
   return (
     <header className="header">
       <div className="navBrand">
@@ -14,6 +19,13 @@ const Header = ({ isAuthorized, isAdmin, logOut }) => {
         </Link>
       </div>
       <ul className="navMenu menu">
+            {localStorage.getItem("isAdmin") === "true" && (
+              <li>
+                <Link to="/adminPage" className="navMenu__link">
+                  Admin Panel
+                </Link>
+              </li>
+            )}
         <li>
           <Link to="/POTD" className="navMenu__link">
             POTD
@@ -36,13 +48,6 @@ const Header = ({ isAuthorized, isAdmin, logOut }) => {
                 Blog
               </Link>
             </li>
-            {isAdmin && (
-              <li>
-                <Link to="/adminPage" className="navMenu__link">
-                  Admin Panel
-                </Link>
-              </li>
-            )}
             <li onClick={logOut}>
               <Link to="/" className="navMenu__link">
                 Log out
@@ -56,6 +61,15 @@ const Header = ({ isAuthorized, isAdmin, logOut }) => {
               Registration
             </Link>
           </li>
+        )}
+        {localStorage.getItem("isAdmin") === "true" && (
+              <li>
+                <Link to="/" 
+                className="navMenu__link"
+                onClick={handleAdminLogout}>
+                  Admin logout
+                </Link>
+              </li>
         )}
       </ul>
     </header>
