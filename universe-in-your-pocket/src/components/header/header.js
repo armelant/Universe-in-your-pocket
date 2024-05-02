@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
-
-const Header = ({ isAuthorized, logOut }) => {
+const Header = ({ isAuthorized, isAdmin, logOut }) => {
   return (
     <header className="header">
       <div className="navBrand">
@@ -26,19 +25,27 @@ const Header = ({ isAuthorized, logOut }) => {
           </Link>
         </li>
         {isAuthorized && (
-          <li>
-            <Link to="/blog" className="navMenu__link">
-              Blog
-            </Link>
-          </li>
+          <>
+            <li>
+              <Link to="/blog" className="navMenu__link">
+                Blog
+              </Link>
+            </li>
+            {isAdmin && (
+              <li>
+                <Link to="/adminPage" className="navMenu__link">
+                  Admin Panel
+                </Link>
+              </li>
+            )}
+            <li onClick={logOut}>
+              <Link to="/" className="navMenu__link">
+                Log out
+              </Link>
+            </li>
+          </>
         )}
-        {isAuthorized ? (
-          <li onClick={logOut}>
-            <Link to="/" className="navMenu__link">
-              Log out
-            </Link>
-          </li>
-        ) : (
+        {!isAuthorized && (
           <li>
             <Link to="/registration" className="navMenu__link">
               Registration

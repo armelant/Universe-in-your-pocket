@@ -8,7 +8,7 @@ class Auth {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject("We have found an error."`Error: ${res.status}`);
+    return Promise.reject(`Error: ${res.status}`);
   }
 
   registration(data) {
@@ -22,6 +22,15 @@ class Auth {
 
   authorize(data) {
     return fetch(`${this._url}/auth/login`, {
+      method: "POST",
+      credentials: "include",
+      headers: this._headers,
+      body: JSON.stringify(data),
+    }).then(this._handleResponse);
+  }
+
+  adminAuthorize(data) {
+    return fetch(`${this._url}/admin/login`, {
       method: "POST",
       credentials: "include",
       headers: this._headers,
