@@ -29,7 +29,6 @@ class Api {
   }
 
   createPost(data) {
-    const userId = localStorage.getItem("userId");
     return fetch(`${this._url}/posts`, {
       method: "POST",
       credentials: "include",
@@ -41,7 +40,7 @@ class Api {
         title: data.title,
         text: data.text,
         imageUrl: data.imageUrl,
-        user: userId,
+
       }),
     }).then(this._handleResponse);
   }
