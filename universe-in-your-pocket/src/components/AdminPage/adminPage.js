@@ -87,98 +87,104 @@ const NewsCRUDPage = ({ handleCreateNews }) => {
   };
 
   return (
-    <div className="form-container">
-      <h2 className="form-title">Create New News</h2>
-      <form onSubmit={handleSubmit} className="form">
-        <input
-          className="form-input"
-          type="text"
-          placeholder="Title"
-          value={title}
-          name="title"
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-        <input
-          className="form-input"
-          type="url"
-          placeholder="Image URL"
-          value={imageUrl}
-          name="imageUrl"
-          onChange={(e) => setImageUrl(e.target.value)}
-        />
-        <textarea
-          className="form-input form-textarea"
-          type="text"
-          placeholder="Text"
-          value={text}
-          name="text"
-          onChange={(e) => setText(e.target.value)}
-          required
-        />
-        <button type="submit" className="form-button">
-          Publish
-        </button>
-      </form>
+    <>
+    <div className="page" role="main" aria-label="News CRUD Page">
+      <h1 className="mainTitle">Admin Page</h1>
+      <div className="form-container">
+        <h2 className="form-title">Create New News</h2>
+        <form onSubmit={handleSubmit} className="form">
+          <input
+            className="form-input"
+            type="text"
+            placeholder="Title"
+            value={title}
+            name="title"
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+          <input
+            className="form-input"
+            type="url"
+            placeholder="Image URL"
+            value={imageUrl}
+            name="imageUrl"
+            onChange={(e) => setImageUrl(e.target.value)}
+          />
+          <textarea
+            className="form-input form-textarea"
+            type="text"
+            placeholder="Text"
+            value={text}
+            name="text"
+            onChange={(e) => setText(e.target.value)}
+            required
+          />
+          <button type="submit" className="form-button">
+            Publish
+          </button>
+        </form>
 
-      {/* Delete News Section */}
-      <h2>Delete News</h2>
-      <form onSubmit={handleDeleteNews} className="form">
-        <input
-          className="form-input"
-          type="String"
-          placeholder="News ID"
-          value={newsIdToDelete}
-          name="newsIdToDelete"
-          onChange={(e) => setNewsIdToDelete(e.target.value)}
-          required
-        />
-        <button type="submit" className="form-button">
-          Delete News
-        </button>
-      </form>
+        {/* Delete News Section */}
+        <h2 className="form-title">Delete News</h2>
+        <form onSubmit={handleDeleteNews} className="form">
+          <input
+            className="form-input"
+            type="String"
+            placeholder="News ID"
+            value={newsIdToDelete}
+            name="newsIdToDelete"
+            onChange={(e) => setNewsIdToDelete(e.target.value)}
+            required
+          />
+          <button type="submit" className="form-button">
+            Delete News
+          </button>
+        </form>
 
-     {/* Edit News Section */}
-     <h2>Edit News</h2>
-      <form onSubmit={handleEditNews} className="form">
-        <input
-          className="form-input"
-          type="text"
-          placeholder="News ID"
-          value={newsToEdit.id}
-          onChange={(e) => setNewsToEdit({ ...newsToEdit, id: e.target.value })}
-          required
-        />
-        <input
-          className="form-input"
-          type="text"
-          placeholder="Title"
-          value={newsToEdit.title}
-          onChange={(e) => setNewsToEdit({ ...newsToEdit, title: e.target.value })}
-          required
-        />
-        <textarea
-          className="form-input form-textarea"
-          type="text"
-          placeholder="Text"
-          value={newsToEdit.text}
-          onChange={(e) => setNewsToEdit({ ...newsToEdit, text: e.target.value })}
-          required
-        />
-        <input
-          className="form-input"
-          type="url"
-          placeholder="Image URL"
-          value={newsToEdit.imageUrl}
-          onChange={(e) => setNewsToEdit({ ...newsToEdit, imageUrl: e.target.value })}
-          required
-        />
-        <button type="submit" className="form-button">
-          Edit News
-        </button>
-      </form>
+      {/* Edit News Section */}
+      <h2 className="form-title">Edit News</h2>
+        <form onSubmit={handleEditNews} className="form">
+          <input
+            className="form-input"
+            type="text"
+            placeholder="News ID"
+            value={newsToEdit.id}
+            onChange={(e) => setNewsToEdit({ ...newsToEdit, id: e.target.value })}
+            required
+          />
+          <input
+            className="form-input"
+            type="text"
+            placeholder="Title"
+            value={newsToEdit.title}
+            onChange={(e) => setNewsToEdit({ ...newsToEdit, title: e.target.value })}
+            required
+          />
+          <textarea
+            className="form-input form-textarea"
+            type="text"
+            placeholder="Text"
+            value={newsToEdit.text}
+            onChange={(e) => setNewsToEdit({ ...newsToEdit, text: e.target.value })}
+            required
+          />
+          <input
+            className="form-input"
+            type="url"
+            placeholder="Image URL"
+            value={newsToEdit.imageUrl}
+            onChange={(e) => setNewsToEdit({ ...newsToEdit, imageUrl: e.target.value })}
+            required
+          />
+          <button type="submit" className="form-button">
+            Edit News
+          </button>
+        </form>
+      </div>
     </div>
+    </>
   );
 };
+
 
 export default NewsCRUDPage;

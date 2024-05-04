@@ -22,6 +22,7 @@ const Register = ({ onRegister }) => {
   }
   return (
     <main className="main">
+      <h1 className="mainTitle">Join Us!</h1>
       <div className="registration">
         <form onSubmit={handleSubmit}>
           <div className="create_acc">Create new account</div>

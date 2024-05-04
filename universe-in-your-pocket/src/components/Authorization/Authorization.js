@@ -22,9 +22,10 @@ const Authorization = ({ onAuthorized }) => {
 
   return (
     <main className="main">
+      <h1 className="mainTitle">Log in to your account </h1>
       <div className="authorization">
         <form onSubmit={handleSubmit}>
-          <label className="login_acc">Login in the account</label>
+          <label className="login_acc">Login</label>
           <InputField
             value={email}
             setValue={setEmail}

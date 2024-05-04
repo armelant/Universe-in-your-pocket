@@ -19,6 +19,7 @@
     border-radius: 16px;
     background-size: contain;
     background-repeat: no-repeat;
+    height: 350px;
   }
 
 .apodTitle {
@@ -42,6 +43,7 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
     flex-grow: 1;
+    line-height: 1.5;
 }
 
 .title {

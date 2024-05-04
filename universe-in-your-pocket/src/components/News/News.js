@@ -12,14 +12,15 @@ const News = () => {
 
   return (
     <main className="main">
+      <h1 className="mainTitle">News</h1>
       {news.map((item) => (
         <div className="news" key={item._id}>
-          <img src={item.imageUrl} alt="sunImg" className="image" />
-          <div className="text">
+          <img src={item.imageUrl} alt="sunImg" className="newsImage" />
+          <div className="newsText">
             <div className="text-container">
-            <h2 className="title">{item.title}</h2>
+            <h2 className="newsTitle">{item.title}</h2>
               {item.text.split('\n\n').map((paragraph, index) => (
-                <p className="summary" key={index}>{paragraph}</p>
+                <p className="newsSummary" key={index}>{paragraph}</p>
               ))}
               </div>
           </div>

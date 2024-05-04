@@ -22,17 +22,21 @@ const Potd = () => {
 
     return (
         <>
-            {apod && (
-                <div className="apodContent">
-                    <div className="apodBox">
-                        <img src={apod.url} alt={apod.title} className="image" />
-                        <div className="apodText">
-                            <h2 className="title">{apod.title} - {apod.date}</h2>
-                            <p className="apodExplanation">{apod.explanation}</p>
+        
+            <div className="page" role="main" aria-label="News CRUD Page">
+                <h1 className="mainTitle">POTD</h1>
+                    {apod && (
+                        <div className="apodContent">
+                            <div className="apodBox">
+                                <img src={apod.url} alt={apod.title} className="image" />
+                                <div className="apodText">
+                                    <h2 className="title">{apod.title} - {apod.date}</h2>
+                                    <p className="apodExplanation">{apod.explanation}</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            )}
+                    )}
+            </div>
         </>
     );
 };
